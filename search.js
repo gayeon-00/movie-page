@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
   button.addEventListener("click", function () {
     const keyword = input.value.trim().toLowerCase();
     movieListContainer.innerHTML = "";
-// 입력 안했을 때 알림
+
     if (!keyword) {
       alert("영화 제목을 입력해주세요.");
       return;
     }
-//
+
     const searchedMovies = movieList.results.filter(movie =>
       movie.original_title.toLowerCase().includes(keyword)
     );
@@ -28,19 +28,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const col = document.createElement("div");
       col.className = "col-md-4 mb-4";
 
-      // 카드 생성
+    
       const card = document.createElement("div");
       card.className = "d-flex flex-column align-items-center border rounded p-2 bg-white text-dark";
       card.style.width = "200px";
-      card.style.cursor = "pointer";  // 마우스 커서 포인터로 변경
+      card.style.cursor = "pointer";
 
-      // 클릭 시 detail.html로 이동 (JS 방식)
+    
       card.addEventListener("click", () => {
         const url = `detail.html?title=${encodeURIComponent(movie.original_title)}&poster=${movie.poster_path}&release=${movie.release_date}&vote=${movie.vote_average}&overview=${encodeURIComponent(movie.overview)}`;
         location.href = url;
       });
 
-      // 카드 내부 요소 구성
+    
       const img = document.createElement("img");
       img.src = posterUrl;
       img.alt = movie.original_title;
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       date.className = "text-muted mb-0";
       date.textContent = `movie - ${year}`;
 
-      // 카드 조립
+      
       card.appendChild(img);
       card.appendChild(title);
       card.appendChild(date);
